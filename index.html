@@ -1,0 +1,918 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Sai Traders - Heavy Equipment Parts Nepal</title>
+    <style>
+        /* ============================================
+           OM SAI TRADERS - HEAVY EQUIPMENT PARTS
+           Single-Page Responsive Template
+           ============================================ */
+
+        /* ---- CSS Variables for easy theming ---- */
+        :root {
+            --jcb-yellow: #FFC107;
+            --jcb-yellow-dark: #E6AC00;
+            --dark-slate: #212121;
+            --dark-slate-light: #333333;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --medium-gray: #9E9E9E;
+            --text-dark: #424242;
+            --shadow: 0 4px 20px rgba(0,0,0,0.15);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.2);
+            --transition: all 0.3s ease;
+        }
+
+        /* ---- Reset & Base Styles ---- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ---- Utility Classes ---- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--jcb-yellow), var(--jcb-yellow-dark));
+            color: var(--dark-slate);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--jcb-yellow-dark), var(--jcb-yellow));
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-slate);
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--jcb-yellow);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        /* ============================================
+           HEADER / NAVBAR
+           ============================================ */
+        .header {
+            background: var(--dark-slate);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--jcb-yellow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--dark-slate);
+        }
+
+        .logo-text {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--jcb-yellow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .location-link {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .location-link:hover {
+            color: var(--jcb-yellow);
+            border-color: var(--jcb-yellow);
+        }
+
+        .location-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .call-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--jcb-yellow);
+            color: var(--dark-slate);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(255,193,7,0.3);
+        }
+
+        .call-btn:hover {
+            background: var(--jcb-yellow-dark);
+            transform: scale(1.05);
+        }
+
+        .call-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-slate) 0%, var(--dark-slate-light) 100%);
+            padding: 140px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background pattern */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,193,7,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,193,7,0.15);
+            color: var(--jcb-yellow);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,193,7,0.3);
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: var(--jcb-yellow);
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        .hero-pricing {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,193,7,0.3);
+            padding: 12px 28px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+        }
+
+        .hero-pricing-text {
+            color: var(--jcb-yellow);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .hero-pricing-sub {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hero-phone {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        .hero-phone a {
+            color: var(--jcb-yellow);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ============================================
+           CATEGORIES GRID SECTION
+           ============================================ */
+        .categories {
+            padding: 60px 20px;
+            background: var(--white);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid #EEEEEE;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--jcb-yellow);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--jcb-yellow);
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            background: var(--jcb-yellow);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark-slate);
+            margin-bottom: 10px;
+        }
+
+        .category-desc {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           WHY CHOOSE US SECTION
+           ============================================ */
+        .why-us {
+            padding: 60px 20px;
+            background: var(--light-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: var(--jcb-yellow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .feature-content h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 6px;
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           FOOTER / CONTACT SECTION
+           ============================================ */
+        .footer {
+            background: var(--dark-slate);
+            color: var(--white);
+            padding: 50px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            text-align: center;
+        }
+
+        .footer-brand .logo-icon {
+            margin: 0 auto 16px;
+            width: 50px;
+            height: 50px;
+            font-size: 1.6rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--jcb-yellow);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact {
+            text-align: center;
+        }
+
+        .footer-contact h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--jcb-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--jcb-yellow);
+            flex-shrink: 0;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--jcb-yellow);
+        }
+
+        .footer-cta {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-cta h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--jcb-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-cta p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           FLOATING CALL BUTTON (Mobile Sticky)
+           ============================================ */
+        .fab-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--jcb-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(255,193,7,0.4);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .fab-call:hover {
+            transform: scale(1.1);
+            background: var(--jcb-yellow-dark);
+        }
+
+        .fab-call svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--dark-slate);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,193,7,0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(255,193,7,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,193,7,0); }
+        }
+
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+
+        /* Tablet (768px and up) */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 160px 40px 100px;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+
+            .hero-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                align-items: start;
+            }
+
+            .footer-brand {
+                text-align: left;
+            }
+
+            .footer-brand .logo-icon {
+                margin: 0 0 16px;
+            }
+
+            .footer-contact {
+                text-align: left;
+            }
+
+            .contact-item {
+                justify-content: flex-start;
+            }
+
+            .footer-cta {
+                text-align: right;
+                align-items: flex-end;
+            }
+
+            .location-link {
+                display: inline-flex;
+            }
+        }
+
+        /* Desktop (1024px and up) */
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* Small Mobile adjustments */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .call-btn span {
+                display: none;
+            }
+
+            .call-btn {
+                padding: 10px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER / NAVBAR
+         ============================================ -->
+    <header class="header">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">OST</div>
+                <div class="logo-text">Om Sai <span>Traders</span></div>
+            </a>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Location Link (visible on tablet+) -->
+                <a href="https://maps.google.com/?q=Sundar+Dulari+44667+Nepal" target="_blank" class="location-link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Find Us</span>
+                </a>
+
+                <!-- Call Now Button -->
+                <a href="tel:+9779802770811" class="call-btn">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>Call Now</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Trusted Since Day One</div>
+            <h1 class="hero-title">Om Sai <span>Traders</span></h1>
+            <p class="hero-tagline">
+                All Brands Heavy Equipment Parts Available Here. We Provide at Wholesale Price!
+            </p>
+            <div class="hero-pricing">
+                <div class="hero-pricing-text">Wholesale Pricing Guaranteed</div>
+                <div class="hero-pricing-sub">Best rates on JCB parts, filters, lubricants & belts</div>
+            </div>
+            <div class="hero-actions">
+                <a href="https://wa.me/9779802770811?text=Hello%20Om%20Sai%20Traders,%20I%20am%20interested%20in%20your%20heavy%20equipment%20parts.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Inquire on WhatsApp
+                </a>
+                <div class="hero-phone">
+                    Or call us directly: <a href="tel:+9779802770811">+977 - 9802770811</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CORE CATEGORIES GRID
+         ============================================ -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Our Specialties</h2>
+            <p class="section-subtitle">Genuine & high-quality parts for all heavy equipment brands</p>
+
+            <div class="categories-grid">
+                <!-- Card 1: JCB Spare Parts -->
+                <div class="category-card">
+                    <div class="category-icon">&#9881;</div>
+                    <h3 class="category-title">JCB Spare Parts</h3>
+                    <p class="category-desc">Complete range of JCB heavy equipment parts including hydraulic components, engine parts, and undercarriage spares at wholesale rates.</p>
+                </div>
+
+                <!-- Card 2: Filters & Service Sets -->
+                <div class="category-card">
+                    <div class="category-icon">&#128736;</div>
+                    <h3 class="category-title">Filters & Service Sets</h3>
+                    <p class="category-desc">Complete filters set including oil filters, air filters, fuel filters, and hydraulic filters for all major equipment brands.</p>
+                </div>
+
+                <!-- Card 3: Lubricants & Oils -->
+                <div class="category-card">
+                    <div class="category-icon">&#128167;</div>
+                    <h3 class="category-title">Lubricants & Oils</h3>
+                    <p class="category-desc">Premium-grade engine oils, hydraulic fluids, gear oils, and greases formulated for extreme heavy-duty operations.</p>
+                </div>
+
+                <!-- Card 4: Heavy Duty Belts -->
+                <div class="category-card">
+                    <div class="category-icon">&#9939;</div>
+                    <h3 class="category-title">Heavy Duty Belts</h3>
+                    <p class="category-desc">High-quality V-belts, timing belts, and conveyor belts built to withstand the toughest industrial conditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         WHY CHOOSE US SECTION
+         ============================================ -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">What makes Om Sai Traders the preferred parts supplier</p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">&#128176;</div>
+                    <div class="feature-content">
+                        <h3>Wholesale Prices</h3>
+                        <p>Direct sourcing means unbeatable wholesale pricing on every part, saving you money on every purchase.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">&#9989;</div>
+                    <div class="feature-content">
+                        <h3>All Brands Available</h3>
+                        <p>We stock parts for JCB, CAT, Komatsu, Hitachi, and all major heavy equipment manufacturers.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">&#128666;</div>
+                    <div class="feature-content">
+                        <h3>Quick Availability</h3>
+                        <p>Most parts are available off-the-shelf. Minimize your equipment downtime with our fast service.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">&#128222;</div>
+                    <div class="feature-content">
+                        <h3>Expert Support</h3>
+                        <p>Our knowledgeable team helps you find the exact part you need. Call or WhatsApp us anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER / CONTACT & LOCATION
+         ============================================ -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <div class="logo-icon">OST</div>
+                <h3>Om Sai <span>Traders</span></h3>
+                <p>Your trusted partner for heavy equipment parts, lubricants, filters, and belts in Nepal. Quality products at wholesale prices.</p>
+            </div>
+
+            <!-- Contact Column -->
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="tel:+9779802770811">+977 - 9802770811</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Near JCB Showroom, Sundar Dulari 44667, Nepal</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span>WhatsApp: +977 - 9802770811</span>
+                </div>
+            </div>
+
+            <!-- CTA Column -->
+            <div class="footer-cta">
+                <h4>Get In Touch</h4>
+                <p>Need a part? Send us a message on WhatsApp and we will respond quickly.</p>
+                <a href="https://wa.me/9779802770811?text=Hello%20Om%20Sai%20Traders,%20I%20am%20interested%20in%20your%20heavy%20equipment%20parts.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp Us
+                </a>
+                <a href="tel:+9779802770811" class="btn btn-primary" style="margin-top: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Call Now
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 Om Sai Traders. All Rights Reserved. | Near JCB Showroom, Sundar Dulari 44667, Nepal
+        </div>
+    </footer>
+
+    <!-- ============================================
+         FLOATING CALL BUTTON (Mobile Sticky)
+         ============================================ -->
+    <a href="tel:+9779802770811" class="fab-call" aria-label="Call Now">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+
+</body>
+</html>'''
+
+# Save to output file
+with open('/mnt/agents/output/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("File saved successfully to /mnt/agents/output/index.html")
+print(f"File size: {len(html_content)} characters")
